@@ -10,13 +10,14 @@ import { removeFromLikedAction } from "../redux/actions";
 const Player = () => {
 
     const dispatch = useDispatch();
-    
+
     const playingInfo = useSelector((state) => state.currentPlaying.results)
     const [isLoading, setIsloading] = useState(true);
     const [trackInfo, setTrackInfo] = useState(null);
     const [isFav, setIsFav] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const isItFav = useSelector((state) => state.liked.list.includes(trackInfo));
-    
+
     useEffect(() => {
         setIsloading(true);
     }, [])
@@ -32,6 +33,11 @@ const Player = () => {
         }
     }, [playingInfo, trackInfo, isFav, isItFav])
 
+    useEffect(() => {
+        console.log(isPlaying)
+    }, [isPlaying])
+
+
     return (
         <div className="player-container">
             <div className="album-details d-flex flex-column">
@@ -46,15 +52,36 @@ const Player = () => {
                         <div>
                             <p>{trackInfo.artist.name}</p>
                             <p>{trackInfo.title}</p>
+                            <audio src={trackInfo.preview}
+                                autoPlay
+                                onPlay={() => {
+                                    setIsPlaying(true)
+                                }}
+                            />
                         </div>
                     </div>
 
                 )}
             </div>
             <div className="player-buttons">
-                <button onClick={() => console.log(playingInfo[0])}>Shuffle</button>
+                <button onClick={() => {console.log(playingInfo[0])}}>Shuffle</button>
                 <button>Backwards</button>
-                <button>Play</button>
+                {isPlaying ? (
+                    <button onClick={() => {
+                        document.querySelector('audio').pause()
+                        setIsPlaying(false)
+                    }}>
+                        Pause
+                    </button>
+
+                ) : (
+                    <button onClick={() => {
+                        document.querySelector('audio').play()
+                        setIsPlaying(true)
+                    }}>
+                        Play
+                    </button>
+                )}
                 <button>Forwards</button>
                 <button>Playback</button>
             </div>
@@ -64,18 +91,20 @@ const Player = () => {
                         <HeartFill onClick={() => {
                             dispatch(removeFromLikedAction(trackInfo))
                             setIsFav(!isFav)
-                            console.log(trackInfo)}} />
+                            console.log(trackInfo)
+                        }} />
                     </div>
                 ) : (
                     <div>
                         <Heart onClick={() => {
                             dispatch(addToLikedAction(trackInfo))
                             setIsFav(!isFav)
-                            console.log(trackInfo)}} />
+                            console.log(trackInfo)
+                        }} />
                     </div>
                 )}
             </div>
-        </div>  
+        </div>
     )
 }
 
