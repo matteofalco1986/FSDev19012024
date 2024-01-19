@@ -1,8 +1,10 @@
 export const ADD_TO_LIKED = 'ADD_TO_LIKED'
 export const REMOVE_FROM_LIKED = 'REMOVE_FROM_LIKED'
 export const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS'
+export const GET_ALBUM_TRACKLIST = 'GET_ALBUM_TRACKLIST'
 
 const baseEndpoint = 'https://deezerdevs-deezer.p.rapidapi.com/'
+const albumEndpoint = 'https://cors-anywhere.herokuapp.com/http://api.deezer.com'
 const options = {
     method: 'GET',
     headers: {
@@ -29,9 +31,28 @@ export const searchAction = (query) => {
                 throw new Error('Network connection was not ok');
             }
             const data = await res.json()
-            console.log(data.data)
+            // console.log(data.data)
             dispatch({
                 type: GET_SEARCH_RESULTS,
+                payload: data.data,
+            });
+        } catch (err) {
+            console.error('Error: ', err);
+        };
+    };
+};
+
+export const getAlbumTracklistAction = (query) => {
+    return async (dispatch) => {
+        try {
+            const res = await fetch(`${albumEndpoint}/album/${query}/tracks`)
+            if (!res.ok) {
+                throw new Error('Network connection was not ok');
+            }
+            const data = await res.json()
+            // console.log(data.data)
+            dispatch({
+                type: GET_ALBUM_TRACKLIST,
                 payload: data.data,
             });
         } catch (err) {

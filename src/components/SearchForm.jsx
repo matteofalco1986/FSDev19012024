@@ -2,9 +2,12 @@ import { Form, Button } from "react-bootstrap"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { searchAction } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 export const SearchForm = () => {
 
+
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [query, setQuery] = useState('')
@@ -14,6 +17,7 @@ export const SearchForm = () => {
         dispatch(searchAction(query));
         console.log(query)
         const timeout = setTimeout(() => { document.querySelector('input').value = '' }, 200);
+        navigate("/search")
     }
 
     const handleChange = (e) => {

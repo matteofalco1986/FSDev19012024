@@ -6,6 +6,7 @@ import { Sidebar } from './components/Sidebar';
 import Player from './components/Player';
 import { HomePage } from './components/HomePage';
 import { AlbumPage } from './components/AlbumPage';
+import { SearchPage } from './components/SearchPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       </header>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/search' element={<SearchPage />} />
         <Route path='/:albumId' element={<AlbumPage />} />
       </Routes>
       <Player />

@@ -163,12 +163,45 @@ footer {
     margin-bottom: 30px;
     img {
         margin-bottom: 10px;
+        &:hover{
+            cursor: pointer;
+            scale: 1.1;
+        }
+        transition: scale 100ms ease-in-out;
     }
     p {
         opacity: 0.8;
         font-size: 0.8rem;
         font-weight: 600;
         margin-bottom: 0;
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+        }
     }
 }
 
+.album-container {
+    justify-content: center;
+    gap: 40px;
+    margin-top: 200px;
+}
+
+.single-track {
+    cursor: pointer;
+    gap: 60px;
+    justify-content: space-between;
+    p{
+        color: $darkLightElements;
+    }
+}
+
+.header-track {
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.details-track {
+    font-size: 0.9rem;
+}
