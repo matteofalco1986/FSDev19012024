@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
+import { Heart } from "react-bootstrap-icons";
+import { HeartFill } from "react-bootstrap-icons";
 
 const Player = () => {
 
     const playingInfo = useSelector((state) => state.currentPlaying.results)
     const [isLoading, setIsloading] = useState(true);
     const [trackInfo, setTrackInfo] = useState(null);
+    const [isFav, setIsFav] = useState(false);
 
     useEffect(() => {
         setIsloading(true);
@@ -27,7 +30,10 @@ const Player = () => {
         <div className="player-container">
             <div className="album-details d-flex flex-column">
                 {isLoading ? (
-                    <Spinner variant="danger" className="mt-3" />
+                    <div>
+                        {/* <Spinner variant="danger" className="mt-3" /> */}
+                        <p>- - - - </p>
+                    </div>
                 ) : (
                     <div className="d-flex align-items-center player-info">
                         <img src="" alt="Album Cover" />
@@ -39,7 +45,7 @@ const Player = () => {
 
                 )}
             </div>
-            <div className="buttons">
+            <div className="player-buttons">
                 <button onClick={() => console.log(playingInfo[0])}>Shuffle</button>
                 <button>Backwards</button>
                 <button>Play</button>
@@ -47,7 +53,15 @@ const Player = () => {
                 <button>Playback</button>
             </div>
             <div className="liked">
-                <div>Heart emoji</div>
+                {isFav ? (
+                    <div>
+                        <HeartFill onClick={() => setIsFav(!isFav)} />
+                    </div>
+                ) : (
+                    <div>
+                        <Heart onClick={() => setIsFav(!isFav)} />
+                    </div>
+                )}
             </div>
         </div>
     )

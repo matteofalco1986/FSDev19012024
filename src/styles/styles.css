@@ -178,4 +178,11 @@ footer {
 .player-info p {
   margin-bottom: 5px;
   opacity: 0.8;
+}
+
+.player-buttons {
+  gap: 10px;
+}
+.player-buttons button {
+  margin-right: 10px;
 }/*# sourceMappingURL=styles.css.map */
