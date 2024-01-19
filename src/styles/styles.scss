@@ -159,6 +159,7 @@ footer {
 // ALBUM SEARCH
 
 .single-album {
+    max-width: 150px;
     color: white;
     margin-bottom: 30px;
     img {
@@ -173,7 +174,7 @@ footer {
         opacity: 0.8;
         font-size: 0.8rem;
         font-weight: 600;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         &:hover {
             cursor: pointer;
             opacity: 1;

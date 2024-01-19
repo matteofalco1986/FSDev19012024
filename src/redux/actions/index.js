@@ -2,6 +2,7 @@ export const ADD_TO_LIKED = 'ADD_TO_LIKED'
 export const REMOVE_FROM_LIKED = 'REMOVE_FROM_LIKED'
 export const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS'
 export const GET_ALBUM_TRACKLIST = 'GET_ALBUM_TRACKLIST'
+export const GET_CURRENT_ALBUM = 'GET_CURRENT_ALBUM'
 
 const baseEndpoint = 'https://deezerdevs-deezer.p.rapidapi.com/'
 const albumEndpoint = 'https://cors-anywhere.herokuapp.com/http://api.deezer.com'
@@ -61,3 +62,12 @@ export const getAlbumTracklistAction = (query) => {
     };
 };
 
+export const getCurrentAlbumAction = (query) => {
+    return (dispatch) => {
+        const data = query;
+            dispatch({
+                type: GET_CURRENT_ALBUM,
+                payload: data,
+            });
+    };
+};

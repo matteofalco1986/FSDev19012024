@@ -119,6 +119,7 @@ footer {
 }
 
 .single-album {
+  max-width: 150px;
   color: white;
   margin-bottom: 30px;
 }
@@ -134,7 +135,7 @@ footer {
   opacity: 0.8;
   font-size: 0.8rem;
   font-weight: 600;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 .single-album p:hover {
   cursor: pointer;

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MyNavbar } from "./MyNavbar";
 import { Spinner } from "react-bootstrap";
+import { current } from "@reduxjs/toolkit";
 
 export const AlbumPage = () => {
 
@@ -13,9 +14,11 @@ export const AlbumPage = () => {
     const navigate = useNavigate();
 
     const tracklist = useSelector((state) => state.tracklist.results);
+    const albumInfo = useSelector((state) => state.currentAlbum.results)
 
     const [isLoading, setIsloading] = useState(true);
     const [tracks, setTracks] = useState(null);
+    const [currentAlbum, setCurrentAlbum] = useState(null);
 
     useEffect(() => {
         setIsloading(true);
@@ -24,11 +27,13 @@ export const AlbumPage = () => {
     useEffect(() => {
         if (tracklist !== null) {
             setTracks(tracklist[0])
+            setCurrentAlbum(albumInfo)
             setIsloading(false)
             console.log(tracklist)
+            console.log(currentAlbum)
             console.log(tracks)
         }
-    }, [tracklist, tracks])
+    }, [tracklist, tracks, albumInfo, currentAlbum])
 
     const convertSecToMins = (seconds) => {
         const minutes = Math.floor(seconds / 60);
@@ -53,9 +58,9 @@ export const AlbumPage = () => {
             ) : (
                 <div className="d-flex album-container">
                     <div className="single-album" >
-                        <img src="" alt="Album image" />
-                        <p className="album-par">Album:  </p>
-                        <p className="artist-par">Artist: </p>
+                        <img src={currentAlbum[0].album.cover} alt="Album image" />
+                        <p className="album-par">Album: "{currentAlbum[0].album.title}"</p>
+                        <p className="artist-par">Artist: {currentAlbum[0].artist.name}</p>
                     </div>
                     <div className="d-flex flex-column">
                         <div className="d-flex single-track">
