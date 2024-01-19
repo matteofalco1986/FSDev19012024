@@ -8,6 +8,12 @@ $darkLightBg: #121212;
 $darkBg: #000000;
 $lightText: #FFFFFF;
 $selectedBg: #222222;
+$playerHeight: 130px;
+$playerPadding: 40px;
+$interfaceColor1: #374A66;
+$interfaceColor2: #111520;
+$sidebarWidth: 300px;
+$gradientRotation: 90deg;
 
 // CSS
 
@@ -24,9 +30,10 @@ $selectedBg: #222222;
 
 header {
     position: fixed;
-    width: 300px;
-    height: 100vh;
+    width: $sidebarWidth;
+    height: calc(100vh - $playerHeight);
     background-color: black;
+    overflow-y: auto;
 
 }
 
@@ -34,6 +41,7 @@ header {
     display: inline-flex;
     gap: 15px;
     margin-bottom: 20px;
+
     a {
         text-decoration: none;
         color: $darkLightElements;
@@ -57,7 +65,7 @@ header {
 // Search form
 
 form {
-    margin-bottom: 62vh;
+    margin-bottom: 50vh;
 }
 
 .form-control {
@@ -71,11 +79,13 @@ form {
     background: transparent;
     color: $darkLightElements;
     border: none;
+
     &:hover {
         background: transparent;
         fill: white;
     }
-    &:active{
+
+    &:active {
         background: transparent !important;
     }
 }
@@ -87,6 +97,7 @@ form {
     border-radius: 40px;
     width: 100%;
     margin-bottom: 15px;
+
     &:hover {
         background-color: white;
         color: black;
@@ -94,6 +105,70 @@ form {
 }
 
 footer {
-    
+
     color: $darkLightElements;
 }
+
+// PLAYER
+
+.player-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    height: $playerHeight;
+    background-color: $darkBg;
+    width: 100vw;
+    z-index: 1;
+    color: $lightText;
+    padding: $playerPadding;
+}
+
+// HOMEPAGE
+
+.home-page {
+    background-color: red;
+    position: fixed;
+    right: 0;
+    width: calc(100vw - $sidebarWidth);
+    height: calc(100vh - $playerHeight);
+    z-index: -1;
+    overflow-y: auto;
+    background-image: linear-gradient($gradientRotation, $interfaceColor1, $interfaceColor2);
+}
+
+.boot-spinner {
+    margin-top: 200px;
+    width: 100px;
+    height: 100px;
+}
+
+// NAVBAR
+
+.navbar {
+    color: white;
+    text-transform: uppercase;
+    opacity: 0.7;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+// ALBUM SEARCH
+
+.single-album {
+    color: white;
+    margin-bottom: 30px;
+    img {
+        margin-bottom: 10px;
+    }
+    p {
+        opacity: 0.8;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+}
+

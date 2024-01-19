@@ -29,10 +29,10 @@ export const searchAction = (query) => {
                 throw new Error('Network connection was not ok');
             }
             const data = await res.json()
-            console.log(data)
+            console.log(data.data)
             dispatch({
                 type: GET_SEARCH_RESULTS,
-                payload: data,
+                payload: data.data,
             });
         } catch (err) {
             console.error('Error: ', err);
