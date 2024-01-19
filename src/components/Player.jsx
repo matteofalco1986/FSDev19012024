@@ -4,14 +4,19 @@ import { useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import { Heart } from "react-bootstrap-icons";
 import { HeartFill } from "react-bootstrap-icons";
+import { addToLikedAction } from "../redux/actions";
+import { removeFromLikedAction } from "../redux/actions";
 
 const Player = () => {
 
+    const dispatch = useDispatch();
+    
     const playingInfo = useSelector((state) => state.currentPlaying.results)
     const [isLoading, setIsloading] = useState(true);
     const [trackInfo, setTrackInfo] = useState(null);
     const [isFav, setIsFav] = useState(false);
-
+    const isItFav = useSelector((state) => state.liked.list.includes(trackInfo));
+    
     useEffect(() => {
         setIsloading(true);
     }, [])
@@ -19,12 +24,13 @@ const Player = () => {
     useEffect(() => {
         if (playingInfo !== null) {
             setTrackInfo(playingInfo[0])
+            setIsFav(isItFav)
             setIsloading(false)
             // console.log(tracklist)
             // console.log(currentAlbum)
             // console.log(tracks)
         }
-    }, [playingInfo, trackInfo])
+    }, [playingInfo, trackInfo, isFav, isItFav])
 
     return (
         <div className="player-container">
@@ -55,15 +61,21 @@ const Player = () => {
             <div className="liked">
                 {isFav ? (
                     <div>
-                        <HeartFill onClick={() => setIsFav(!isFav)} />
+                        <HeartFill onClick={() => {
+                            dispatch(removeFromLikedAction(trackInfo))
+                            setIsFav(!isFav)
+                            console.log(trackInfo)}} />
                     </div>
                 ) : (
                     <div>
-                        <Heart onClick={() => setIsFav(!isFav)} />
+                        <Heart onClick={() => {
+                            dispatch(addToLikedAction(trackInfo))
+                            setIsFav(!isFav)
+                            console.log(trackInfo)}} />
                     </div>
                 )}
             </div>
-        </div>
+        </div>  
     )
 }
 
