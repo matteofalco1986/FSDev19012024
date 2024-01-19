@@ -127,6 +127,10 @@ footer {
 
 // HOMEPAGE
 
+.home {
+    cursor: pointer;
+}
+
 .home-page {
     background-color: red;
     position: fixed;
@@ -159,7 +163,7 @@ footer {
 // ALBUM SEARCH
 
 .single-album {
-    max-width: 150px;
+    max-width: 300px;
     color: white;
     margin-bottom: 30px;
     img {
@@ -205,4 +209,15 @@ footer {
 
 .details-track {
     font-size: 0.9rem;
+}
+
+// PLAYER
+
+.player-info {
+    gap: 20px;
+    font-size: 0.8rem;
+    p{
+        margin-bottom: 5px;
+        opacity: 0.8;
+    }
 }

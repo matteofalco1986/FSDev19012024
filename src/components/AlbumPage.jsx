@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { MyNavbar } from "./MyNavbar";
 import { Spinner } from "react-bootstrap";
-import { current } from "@reduxjs/toolkit";
+import { SingleSong } from "./SingleSong";
 
 export const AlbumPage = () => {
 
@@ -29,9 +29,9 @@ export const AlbumPage = () => {
             setTracks(tracklist[0])
             setCurrentAlbum(albumInfo)
             setIsloading(false)
-            console.log(tracklist)
-            console.log(currentAlbum)
-            console.log(tracks)
+            // console.log(tracklist)
+            // console.log(currentAlbum)
+            // console.log(tracks)
         }
     }, [tracklist, tracks, albumInfo, currentAlbum])
 
@@ -70,11 +70,7 @@ export const AlbumPage = () => {
                         </div>
                         {tracks.map((element) => {
                             return (
-                                <div className="d-flex single-track" onClick={() => navigate('/')}>
-                                    <p className="details-track">{element.track_position}</p>
-                                    <p className="details-track">{element.title}</p>
-                                    <p className="details-track">{convertSecToMins(element.duration)}</p>
-                                </div>
+                                <SingleSong element={element} albumInfo={albumInfo}/>
                             )
                         })}
                     </div>
