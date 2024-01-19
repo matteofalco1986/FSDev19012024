@@ -58,7 +58,7 @@ export const AlbumPage = () => {
             ) : (
                 <div className="d-flex album-container">
                     <div className="single-album" >
-                        <img src={currentAlbum[0].album.cover} alt="Album image" />
+                        <img src={currentAlbum[0].album.cover_big} alt="Album image" className="album-image-playlist"/>
                         <p className="album-par">Album: "{currentAlbum[0].album.title}"</p>
                         <p className="artist-par">Artist: {currentAlbum[0].artist.name}</p>
                     </div>

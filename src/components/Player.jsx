@@ -12,27 +12,31 @@ const Player = () => {
 
     const dispatch = useDispatch();
 
+    const albumInfo = useSelector((state) => state.currentAlbum.results)
     const playingInfo = useSelector((state) => state.currentPlaying.results)
     const [isLoading, setIsloading] = useState(true);
     const [trackInfo, setTrackInfo] = useState(null);
     const [isFav, setIsFav] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [infoAlbum, setInfoAlbum] = useState(albumInfo)
     const isItFav = useSelector((state) => state.liked.list.includes(trackInfo));
 
     useEffect(() => {
         setIsloading(true);
     }, [])
-
+    
     useEffect(() => {
         if (playingInfo !== null) {
             setTrackInfo(playingInfo[0])
             setIsFav(isItFav)
+            setInfoAlbum(albumInfo)
             setIsloading(false)
+            console.log(infoAlbum)
             // console.log(tracklist)
             // console.log(currentAlbum)
             // console.log(tracks)
         }
-    }, [playingInfo, trackInfo, isFav, isItFav])
+    }, [playingInfo, trackInfo, isFav, isItFav, albumInfo, infoAlbum])
 
     useEffect(() => {
         console.log(isPlaying)
@@ -48,11 +52,11 @@ const Player = () => {
                 {isLoading ? (
                     <div>
                         {/* <Spinner variant="danger" className="mt-3" /> */}
-                        <p>- - - - </p>
+                        <p> - - - - - - - - </p>
                     </div>
                 ) : (
                     <div className="d-flex align-items-center player-info">
-                        <img src="" alt="Album Cover" />
+                        <img src="" alt="Album Cover" className="image-album"/>
                         <div>
                             <p>{trackInfo.artist.name}</p>
                             <p>{trackInfo.title}</p>
@@ -60,6 +64,7 @@ const Player = () => {
                                 autoPlay
                                 onPlay={() => {
                                     setIsPlaying(true)
+                                    document.querySelector('.image-album').setAttribute('src', albumInfo[0].album.cover)
                                 }}
                                 onEnded={() => {
                                     setIsPlaying(false)

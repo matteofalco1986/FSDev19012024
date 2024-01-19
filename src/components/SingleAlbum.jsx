@@ -17,7 +17,7 @@ export const SingleAlbum = ({ info }) => {
 
     return (
         <div className="single-album" onClick={() => {
-            console.log(info)
+            // console.log(info)
             dispatch(getCurrentAlbumAction(albumInfo));
             dispatch(getAlbumTracklistAction(albumId));
             navigate(`/${info.album.id}`)
