@@ -193,12 +193,29 @@ footer {
     margin-bottom: 100px;
 }
 
+.songs-container {
+    gap: 15px;
+}
+
 .single-track {
     cursor: pointer;
+    border-radius: 5px;
+    padding: 4px 10px;
     gap: 60px;
     justify-content: space-between;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.096);
+    }
+    &:nth-child(1){
+        &:hover{
+            background: transparent;
+            cursor: auto;
+        }
+    }
+    transition: background-color 50ms ease-in-out;
     p{
         color: $darkLightElements;
+        margin-bottom: 0;
     }
 }
 

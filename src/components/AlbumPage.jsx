@@ -62,7 +62,7 @@ export const AlbumPage = () => {
                         <p className="album-par">Album: "{currentAlbum[0].album.title}"</p>
                         <p className="artist-par">Artist: {currentAlbum[0].artist.name}</p>
                     </div>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column songs-container">
                         <div className="d-flex single-track">
                             <p className="header-track">Number</p>
                             <p className="header-track">Track name</p>
