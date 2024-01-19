@@ -5,7 +5,7 @@ Prima di cominciare, entrare nella cartella di progetto da terminale e installar
 - npm i react-router-dom
 - npm i react-redux
 - npm i @reduxjs/toolkit
-= npm i react-bootstrap-icons
+- npm i react-bootstrap-icons
 
 
 Per fare le request sulla API officiale di Deezer è necessario passare per un proxy. Andare su:
