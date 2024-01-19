@@ -8,7 +8,7 @@ npm i @reduxjs/toolkit
 npm i react-bootstrap-icons
 
 
-Per fare le request sulla app officiale di Deezer è necessario passare per un proxy. Andare su:
+Per fare le request sulla API officiale di Deezer è necessario passare per un proxy. Andare su:
 
 https://cors-anywhere.herokuapp.com/corsdemo
 
