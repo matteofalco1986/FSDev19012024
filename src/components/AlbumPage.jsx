@@ -70,7 +70,7 @@ export const AlbumPage = () => {
                         </div>
                         {tracks.map((element) => {
                             return (
-                                <SingleSong element={element} albumInfo={albumInfo}/>
+                                <SingleSong element={element} albumInfo={albumInfo} key={element.id}/>
                             )
                         })}
                     </div>

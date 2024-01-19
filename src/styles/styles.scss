@@ -19,6 +19,8 @@ $gradientRotation: 90deg;
 
 // Sidebar
 
+
+
 .sidebar {
     padding: 30px;
 }
@@ -232,6 +234,8 @@ footer {
 // PLAYER
 
 .player-info {
+    min-width: 350px;
+    max-width: 350px;
     gap: 20px;
     font-size: 0.8rem;
     p{
@@ -244,5 +248,12 @@ footer {
     gap: 10px;
     button {
         margin-right: 10px;
+        background: transparent;
+        border: none;
+        color: white;
     }
+}
+
+.details-track:nth-child(1) {
+    width: 10px;
 }

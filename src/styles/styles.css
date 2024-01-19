@@ -188,6 +188,8 @@ footer {
 }
 
 .player-info {
+  min-width: 350px;
+  max-width: 350px;
   gap: 20px;
   font-size: 0.8rem;
 }
@@ -201,4 +203,11 @@ footer {
 }
 .player-buttons button {
   margin-right: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.details-track:nth-child(1) {
+  width: 10px;
 }/*# sourceMappingURL=styles.css.map */
